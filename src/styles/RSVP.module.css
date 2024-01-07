@@ -1,0 +1,24 @@
+/* RSVP.module.css */
+.container {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #F14A23;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    color: #000000;
+}
+
+.title {
+    text-align: top;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+.paragraph {
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+}
