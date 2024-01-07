@@ -19,12 +19,17 @@ const LanguageSwitcher: React.FC = () => {
     marginRight: '5px',
   };
 
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+    localStorage.setItem('language', language);
+  };
+
   return (
     <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
       <span
         style={currentLanguage === 'en' ? activeStyle : inactiveStyle}
         onClick={() => {
-          i18n.changeLanguage('en');
+          changeLanguage('en');
           console.log("Language changed to:", i18n.language);
         }}
       >
@@ -34,7 +39,7 @@ const LanguageSwitcher: React.FC = () => {
       <span
         style={currentLanguage === 'fi' ? activeStyle : inactiveStyle}
         onClick={() => {
-          i18n.changeLanguage('fi');
+          changeLanguage('fi');
           console.log("Language changed to:", i18n.language);
         }}
       >

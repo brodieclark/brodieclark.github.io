@@ -29,15 +29,15 @@ i18n
 
 // In your i18n.ts
 
-// const browserLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
+const browserLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
 
-// i18n
-//     .use(initReactI18next)
-//     .init({
-//         // ... other i18n config
-//         lng: browserLanguage,
-//         fallbackLng: 'en',
-//         // ...
-//     });
+i18n
+    .use(initReactI18next)
+    .init({
+        // ... other i18n config
+        lng: browserLanguage,
+        fallbackLng: 'en',
+        // ...
+    });
 
 export default i18n;

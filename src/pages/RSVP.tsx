@@ -11,6 +11,14 @@ const RSPV: React.FC = () => {
             <LanguageSwitcher />
             <h1 className={styles.title}>RSPV</h1>
             <p className={styles.paragraph}>{t('rsvp')}</p>
+            <div className={styles.iframeContainer}>
+                <iframe
+                    src={t('rsvp-form')}
+                    className={styles.responsiveIframe}
+                >
+                    Loading…
+                </iframe>
+            </div>
         </div >
     );
 };
