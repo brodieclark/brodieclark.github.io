@@ -1,14 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from '../styles/RSVP.module.css';
-import LanguageSwitcher from '../components/LanguageSwitcher';
 
 const RSPV: React.FC = () => {
     const { t } = useTranslation();
 
     return (
         <div className={styles.container}>
-            <LanguageSwitcher />
             <h1 className={styles.title}>RSPV</h1>
             <p className={styles.paragraph}>{t('rsvp')}</p>
             <div className={styles.iframeContainer}>

@@ -1,5 +1,7 @@
 {
     "rsvp": "Fill out the response form to let us know if you can come to our wedding. You can fill out the form in any language you prefer, but we recommend Finnish or English.",
     "home": "Home",
-    "rsvp-form": "https://docs.google.com/forms/d/e/1FAIpQLSdyC1qxHAWxGoCnrJGloNGAU4GpEylwKKxbSfBWTyFODmfR1g/viewform?embedded=true&hl=en"
+    "rsvp-form": "https://docs.google.com/forms/d/e/1FAIpQLSdyC1qxHAWxGoCnrJGloNGAU4GpEylwKKxbSfBWTyFODmfR1g/viewform?embedded=true&hl=en",
+    "journey": "journey",
+    "explore": "explore"
 }

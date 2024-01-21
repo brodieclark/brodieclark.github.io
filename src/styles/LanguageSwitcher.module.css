@@ -1,0 +1,22 @@
+/* LanguageSwitcher.module.css */
+/* ... existing styles ... */
+.languageSwitcherContainer {
+    /* position: absolute;
+    top: 10px; */
+    right: 10px;
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    .languageSwitcherContainer {
+        font-size: 14px;
+        /* Smaller font size for screens narrower than 600px */
+    }
+}
+
+@media (max-width: 400px) {
+    .languageSwitcherContainer {
+        font-size: 12px;
+        /* Even smaller font size for screens narrower than 400px */
+    }
+}

@@ -27,8 +27,6 @@ i18n
         },
     });
 
-// In your i18n.ts
-
 const browserLanguage = navigator.language.includes('fi') ? 'fi' : 'en';
 
 i18n

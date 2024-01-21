@@ -1,27 +1,23 @@
-import React, { useEffect } from 'react';
-import i18n from 'i18next';
+import React from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-// import LayoutComponent from './components/Layout';
+import Header from './components/Header';
 import RSVP from './pages/RSVP';
 import Home from './pages/Home';
+import Journey from './pages/Journey';
+import Explore from './pages/Explore';
 
 export interface IAppProps { }
 
 const App: React.FunctionComponent<IAppProps> = (props) => {
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      i18n.changeLanguage(savedLanguage);
-    }
-  }, []);
-
-
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="rsvp" element={<RSVP />} />
+        <Route path="journey" element={<Journey />} />
+        <Route path="explore" element={<Explore />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
