@@ -1,28 +1,15 @@
-/* MapComponent.module.css */
-/* Existing styles... */
-
-/* Styles intended to hide Google Maps elements */
-a[href^="http://maps.google.com/maps"] {
-    display: none !important;
-}
-
-a[href^="https://maps.google.com/maps"] {
-    display: none !important;
-}
-
-.gmnoprint a,
-.gmnoprint span,
-.gm-style-cc {
+#map-report div.gmnoprint,
+#map-report div.gmnoscreen {
     display: none;
 }
 
-.gmnoprint div {
-    background: none !important;
+img[alt="Google"] {
+    display: none;
 }
 
 .mapContainer {
-    width: 800px;
-    /* Adjust size as needed */
-    height: 600px;
-    /* Adjust size as needed */
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    justify-content: center;
 }
