@@ -21,10 +21,6 @@ jobs:
       run: npm install
 
     - name: Build and Deploy
-      env:
-        GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}  # Set your API key in the environment
       run: |
-        # Set the API key in your environment, or directly in your build process
-        echo "REACT_APP_GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}" > .env
         npm run build
         npm run deploy
