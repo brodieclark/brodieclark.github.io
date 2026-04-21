@@ -22,7 +22,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "preview": "npx --yes serve -s build -l 4173",
+    "sync-brld": "sh -c 'RR=${ROUTE_RIVER_SVG:-../../../route-river-svg}; cp \"$RR/spectator_map.html\" public/brld/index.html && cp \"$RR/brld-nike.webp\" \"$RR/brld-adidas.webp\" public/brld/'"
   },
   "eslintConfig": {
     "extends": [
