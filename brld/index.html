@@ -432,6 +432,7 @@ function renderRouteLegs(routeIndex, routeColor) {
   }
   const r = routes[routeIndex];
   const ordered = orderedMarkersForRoute(r.stop_ids);
+  const routeNotes = ROUTE_NOTES[r.id] || null;
   if (ordered.length < 2) {
     section.hidden = false;
     const p = document.createElement('p');
@@ -450,6 +451,8 @@ function renderRouteLegs(routeIndex, routeColor) {
     const a = ordered[i], b = ordered[i + 1];
     const dk = b.distance_along_km - a.distance_along_km;
     const gap = routeLegClockGapMinutes(a, b);
+    const legKey = a.id + '->' + b.id;
+    const customLegText = routeNotes && routeNotes.legs ? routeNotes.legs[legKey] : '';
     const li = document.createElement('li');
     li.className = 'route-leg';
     if (routeColor) li.style.borderLeftColor = routeColor;
@@ -458,7 +461,11 @@ function renderRouteLegs(routeIndex, routeColor) {
     title.textContent = (i + 1) + '. ' + a.name + ' -> ' + b.name;
     const pCourse = document.createElement('p');
     pCourse.className = 'route-leg-meta';
-    pCourse.textContent = dk.toFixed(2) + ' km along the course for the runner from the first pin to the second (pins are snapped to the GPX track).';
+    if (customLegText) {
+      pCourse.textContent = customLegText;
+    } else {
+      pCourse.textContent = dk.toFixed(2) + ' km along the course for the runner from the first pin to the second (pins are snapped to the GPX track).';
+    }
     const pGap = document.createElement('p');
     pGap.className = 'route-leg-meta';
     if (gap && gap.hi >= 0) {
@@ -481,6 +488,18 @@ function renderRouteLegs(routeIndex, routeColor) {
 const routes = DATA.spectator_routes || [];
 const chipHost = document.getElementById('route-chips');
 const detailEl = document.getElementById('route-detail');
+// Optional manual copy per route/leg.
+// Add transport instructions or other notes here without editing the encoded DATA blob.
+const ROUTE_NOTES = {
+  // Example:
+  // medium: {
+  //   detail: 'Take the Jubilee line from Canary Wharf to London Bridge, then walk 8 minutes.',
+  //   legs: {
+  //     'vp2->vp11': 'Take the Overground from Surrey Quays to Rotherhithe, then walk to The Brunel.',
+  //     'vp11->vp6': 'Take the Elizabeth line to Whitechapel and change for Overground to Shadwell.'
+  //   }
+  // }
+};
 
 function setActiveChip(activeBtn) {
   chipHost.querySelectorAll('button').forEach(b => b.classList.remove('active'));
@@ -515,7 +534,12 @@ function applyRouteFilter(mode, routeIndex) {
     const r = routes[routeIndex];
     const names = orderedNamesForRoute(r.stop_ids);
     const n = orderedMarkersForRoute(r.stop_ids).length;
-    detailEl.textContent = r.name + ' - ' + n + ' viewing point' + (n === 1 ? '' : 's') + ' in course order: ' + names.join(' -> ');
+    const routeNote = ROUTE_NOTES[r.id];
+    if (routeNote && routeNote.detail) {
+      detailEl.textContent = routeNote.detail;
+    } else {
+      detailEl.textContent = r.name + ' - ' + n + ' viewing point' + (n === 1 ? '' : 's') + ' in course order: ' + names.join(' -> ');
+    }
     renderRouteLegs(routeIndex, routeColor);
     const fgLayers = [line];
     r.stop_ids.forEach(id => { if (markerById[id]) fgLayers.push(markerById[id]); });
